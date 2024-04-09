@@ -60,13 +60,13 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" style="background-color: #343a40; border-color: #343a40;" class="{{ $key == 0 ? 'active' : '' }}"></li>
                 @endforeach
             </ol>
-            <div class="carousel-inner" style="background-color: #CBDBDA; padding-top: 100px; padding-bottom: 150px; border-radius: 100px;">
+            <div class="carousel-inner" style="background-color: #D3F1E5; padding-top: 100px; padding-bottom: 150px; border-radius: 100px;">
                 @foreach ($latestPosts as $key => $singlePost)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <div style="background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);">
+                                    <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);">
                                         <div style="text-align: center;">
                                             <h4 style="color: #343a40; font-size: 24px; font-weight: bold; margin-bottom: 15px;">{{ $singlePost->title }}</h4>
                                             <p style="color: #666666; font-size: 16px; margin-bottom: 15px;">{{ substr($singlePost->description, 0, 150) }}...</p>
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div style="background-color: #ffffff ; border: 1px solid #ccc; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); text-align: center;">
+                                    <div style="background-color:  white ; border: 1px solid #ccc; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); text-align: center;">
                                         <img src="postimages/{{$singlePost->image}}" style="max-width: 400px; height: auto; border-radius: 10px; margin: 0 auto 20px; display: block;" alt="Post Image">
                               
                                         <a href="{{ route('post_details', ['id' => $singlePost->id]) }}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 8px 16px; border-radius: 5px; display: inline-block; font-size: 14px;">READ MORE</a>
@@ -146,15 +146,17 @@
 <div class="services_section layout_padding">
     <div class="container">
         <h1 class="services_taital">Blog Posts</h1>
-        <p class="services_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
+        <p class="services_text">Explore our latest blog posts covering a wide range of topics including technology, lifestyle, travel, food, and more. Stay updated with insightful articles, captivating stories, and thought-provoking discussions.</p>
         <div class="services_section_2">
             <div class="row">
                 @foreach($post as $post)
                     <div class="col-md-4" style="margin-bottom: 50px;">
-                        <div style="height: 200px; overflow: hidden;"><img src="postimages/{{$post->image}}" class="services_img" style="width: 100%; object-fit: cover; border-radius: 5px;"></div>
+                        <div class="post_image_container" style="height: 200px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                            <img src="postimages/{{$post->image}}" class="services_img" style="max-width: 100%; max-height: 100%; border-radius: 5px;">
+                        </div>
                         <h2 style="margin-top: 20px; font-size: 24px; text-align: center;">{{$post->title}}</h2>
                         <p style="font-size: 16px; color: #666; text-align: center;">Posted By <b>{{$post->name}}</b></p>
-                        <div class="btn_main" style="text-align: center;"><a href="{{url('post_details',$post->id)}}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; display: inline-block;">READ MORE</a></div>
+                        <div class="btn_main text-center" style="margin-top: 20px;"><a href="{{url('post_details',$post->id)}}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; display: inline-block;">READ MORE</a></div>
                     </div>
                 @endforeach
             </div>
@@ -165,25 +167,24 @@
 
       
       
-      <!-- about section start -->
-      <div class="about_section layout_padding">
+          <!-- about section start -->
+          <div class="about_section layout_padding">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-6">
                   <div class="about_taital_main">
                      <h1 class="about_taital">About Us</h1>
-                     <p class="about_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All </p>
-                     <div class="readmore_bt"><a href="#">Read More</a></div>
+                     <p class="about_text">Blogarama is more than just a blogging platform - it's a community where individuals from diverse backgrounds come together to share their ideas, experiences, and passions. Our mission is to provide a platform for bloggers to express themselves freely, connect with like-minded individuals, and inspire others through their words.</p>
+                     <div class="readmore_bt"><a href="{{ URL::to('/services') }}">Read More</a></div>
                   </div>
                </div>
                <div class="col-md-6 padding_right_0">
-                  <div><img src="images/about-img.png" class="about_img"></div>
+                  <div><img src="images/bg.jpg" class="about_img"></div>
                </div>
             </div>
          </div>
       </div>
       <!-- about section end -->
-
       
       
       
@@ -200,17 +201,14 @@
       
       
       <!-- choose section start -->
-      <div class="choose_section layout_padding">
-         <div class="container">
-            <h1 class="choose_taital">Why Choose Us</h1>
-            <p class="choose_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All </p>
-            <div class="read_bt_1"><a href="#">Read More</a></div>
-            <div class="newsletter_box">
-               <h1 class="let_text">Let Start Talk with Us</h1>
-               <div class="getquote_bt"><a href="#">Get A Quote</a></div>
-            </div>
-         </div>
-      </div>
-      <!-- choose section end -->
+<div class="choose_section layout_padding">
+   <div class="container">
+      <h1 class="choose_taital">Why Choose Blogarama</h1>
+      <p class="choose_text">Blogarama offers a unique platform for bloggers of all interests and niches. Whether you're a seasoned blogger or just starting out, our diverse community provides the perfect environment to share your passion with like-minded individuals. With Blogarama, you can discover new blogs, connect with fellow bloggers, and expand your audience. Join us today and experience the excitement of the blogging world!</p>
+      <div class="read_bt_1"><a href="{{URL::to('/services')}}">Read More</a></div>
+   </div>
+</div>
+<!-- choose section end -->
+
 
 <x-footer />
