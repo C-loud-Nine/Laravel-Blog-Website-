@@ -33,6 +33,19 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- Custom JavaScript for carousel -->
+    <script>
+        $(document).ready(function(){
+            $('#carouselExampleIndicators').carousel({
+                interval: 3000, // 3 seconds
+                pause: 'hover' // Pause on hover
+            });
+        });
+    </script>
 </head>
 <body>
 

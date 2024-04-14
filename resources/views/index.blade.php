@@ -45,67 +45,57 @@
 
 
 
-
-
-      <!-- client section start -->
-<div class="about_section layout_padding" style="background-color: white; padding-top: 100px; padding-bottom: 150px;">
+      <div class="about_section layout_padding" style="background-color: white; padding-top: 100px; padding-bottom: 150px;">
     <div style="text-align: center; margin-bottom: 20px;">
         <h1 style="color: #343a40; font-size: 36px; font-weight: bold; margin-bottom: 20px;">Latest From Blog . . .</h1>
     </div>
     <div>
         @if ($latestPosts->isNotEmpty())
         <div id="carouselExampleIndicators" class="carousel slide position-relative" data-ride="carousel">
-            <ol class="carousel-indicators" style="z-index: 1;">
+            <div class="carousel-inner" style="background-image: url('images/lat.png'); opacity:0.9; background-size: cover; background-position: center; padding-top: 100px; padding-bottom: 150px;">
                 @foreach ($latestPosts as $key => $singlePost)
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" style="background-color: #343a40; border-color: #343a40;" class="{{ $key == 0 ? 'active' : '' }}"></li>
-                @endforeach
-            </ol>
-            <div class="carousel-inner" style="background-color: #EAE5EF; padding-top: 100px; padding-bottom: 150px; border-radius: 100px;">
-                @foreach ($latestPosts as $key => $singlePost)
-                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);">
-                                        <div style="text-align: center;">
-                                            <h4 style="color: #343a40; font-size: 24px; font-weight: bold; margin-bottom: 15px;">{{ $singlePost->title }}</h4>
-                                            <p style="color: #666666; font-size: 16px; margin-bottom: 15px;">{{ substr($singlePost->description, 0, 150) }}...</p>
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div style="background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);">
+                                    <div style="text-align: center;">
+                                        <h4 style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 15px;">{{ $singlePost->title }}</h4>
+                                        <p style="color: white; font-size: 16px; margin-bottom: 15px;">{{ substr($singlePost->description, 0, 150) }}...</p>
+                                    </div>
+                                    <div style="margin-top: 15px;">
+                                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                                            <span style="color: white; font-size: 18px; font-weight: bold; margin-right: 10px;">Blogger:</span>
+                                            <span style="color: white; font-size: 18px;">{{ $singlePost->name }}</span>
                                         </div>
-                                        <div style="margin-top: 15px;">
-                                            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
-                                                <span style="color: #343a40; font-size: 18px; font-weight: bold; margin-right: 10px;">Blogger:</span>
-                                                <span style="color: #666666; font-size: 18px;">{{ $singlePost->name }}</span>
-                                            </div>
-                                            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
-                                                <span style="color: #343a40; font-size: 18px; font-weight: bold; margin-right: 10px;">Type:</span>
-                                                <span style="color: #666666; font-size: 18px;">{{ $singlePost->type }}</span>
-                                            </div>
-                                            <div style="display: flex; align-items: center; justify-content: center;">
-                                                <span style="color: #343a40; font-size: 18px; font-weight: bold; margin-right: 10px;">Posted At:</span>
-                                                <span style="color: #666666; font-size: 18px;">{{ $singlePost->created_at->format('M d, Y') }}</span>
-                                            </div>
+                                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                                            <span style="color: white; font-size: 18px; font-weight: bold; margin-right: 10px;">Type:</span>
+                                            <span style="color: white; font-size: 18px;">{{ $singlePost->type }}</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; justify-content: center;">
+                                            <span style="color: white; font-size: 18px; font-weight: bold; margin-right: 10px;">Posted At:</span>
+                                            <span style="color: white; font-size: 18px;">{{ $singlePost->created_at->format('M d, Y') }}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div style="background-color:  white ; border: 1px solid #ccc; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); text-align: center;">
-                                        <img src="postimages/{{$singlePost->image}}" style="max-width: 400px; height: auto; border-radius: 10px; margin: 0 auto 20px; display: block;" alt="Post Image">
-                              
-                                        <a href="{{ route('post_details', ['id' => $singlePost->id]) }}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 8px 16px; border-radius: 5px; display: inline-block; font-size: 14px;">READ MORE</a>
-                                        
-                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="background-color: rgba(0, 0, 0, 0.7); border: 1px solid #ccc; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); text-align: center;">
+                                    <img src="postimages/{{$singlePost->image}}" style="max-width: 400px; height: auto; border-radius: 10px; margin: 0 auto 20px; display: block;" alt="Post Image">
+                                    <a href="{{ route('post_details', ['id' => $singlePost->id]) }}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 8px 16px; border-radius: 5px; display: inline-block; font-size: 14px;">READ MORE</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="left: 0; right: auto; bottom: -50px; z-index: 2;">
-                <span class="carousel-control-prev-icon" aria-hidden="true" style="color: #343a40;"></span>
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="color: white;"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="right: 0; left: auto; bottom: -50px; z-index: 2;">
-                <span class="carousel-control-next-icon" aria-hidden="true" style="color: #343a40;"></span>
+                <span class="carousel-control-next-icon" aria-hidden="true" style="color: white;"></span>
                 <span class="sr-only">Next</span>
             </a>
         </div>
@@ -114,8 +104,6 @@
         @endif
     </div>
 </div>
-<!-- client section start -->
-
 
 
 
@@ -165,7 +153,24 @@
 </div>
 <!-- services section end -->
 
-      
+  
+
+<div class="about_section layout_padding" style="background-image: url('images/news.jpg');opacity:0.9; background-size: cover; background-position: center;">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 text-center" style="padding: 50px; background-color: rgba(0, 0, 0, 0.7); border-radius: 10px;">
+                <h1 class="about_taital" style="color: white; margin-bottom: 20px;">Top Stories</h1>
+                <p class="about_text" style="color: white; margin-bottom: 30px;">news api text</p>
+                <div class="readmore_bt">
+                    <a href="{{ URL::to('/services') }}" style="color: white; background-color: #4CAF50; border: none; padding: 10px 30px; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;">Continue</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
       
           <!-- about section start -->
           <div class="about_section layout_padding">
@@ -199,24 +204,8 @@
       
       
       
-      
- <!-- about section start -->
- <div class="about_section layout_padding">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="about_taital_main">
-                     <h1 class="about_taital">Top Stories</h1>
-                     <p class="about_text">news api text</p>
-                     <div class="readmore_bt"><a href="{{ URL::to('/services') }}">Continue</a></div>
-                  </div>
-               </div>
-               <div class="col-md-6 padding_right_0">
-                  <div><img src="images/bg.jpg" class="about_img"></div>
-               </div>
-            </div>
-         </div>
-      </div>
+
+
 
 
 <x-footer />
