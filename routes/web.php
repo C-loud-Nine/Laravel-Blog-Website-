@@ -31,6 +31,14 @@ Route::post('/update_user_postdone/{id}', [MainController::class, 'update_user_p
 Route::get('/comment/{id}', [MainController::class, 'comment'])->name('comment');
 Route::post('/comment/{id}', [MainController::class, 'comment'])->name('comment');
 
+Route::get('/user_profile', [MainController::class, 'user_profile'])->name('user_profile');
+Route::get('/edit_profile/{id}', [MainController::class, 'edit_profile'])->name('edit_profile');
+Route::post('/edit_profile/{id}', [MainController::class, 'edit_profile'])->name('edit_profile');
+Route::get('/delete_user/{id}', [MainController::class, 'delete_user'])->name('delete_user');
+Route::get('/admin_profile', [MainController::class, 'admin_profile'])->name('admin_profile');
+
+
+
 
 
 Route::get('/admin/adminhome', [AdminController::class, 'adminHome'])->name('admin.adminhome');
@@ -57,6 +65,7 @@ Route::get('/promotion', [AdminController::class, 'promotion']);
 Route::post('/add_promotion', [AdminController::class, 'add_promotion']);
 Route::get('/add_promotion/{id}', [AdminController::class, 'add_promotion']);
 Route::get('/adminlist', [AdminController::class, 'adminlist']);
+;
 
 
 

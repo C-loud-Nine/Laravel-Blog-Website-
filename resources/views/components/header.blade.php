@@ -65,6 +65,9 @@
                             <a class="nav-link" href="{{ URL::to('/create_post') }}">Create Blog</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ URL::to('/user_profile') }}">Profile</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ URL::to('/logout') }}">Logout</a>
                         </li>
                         <?php else: ?>
@@ -92,6 +95,7 @@
                     <?php if(session()->has('id')): ?>
                         <li><a href="{{ URL::to('/my_post') }}">My Blog</a></li>
                         <li><a href="{{ URL::to('/create_post') }}">Create Blog</a></li>
+                        <li><a href="{{ URL::to('/user_profile') }}">Profile</a></li>
                         <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
                     <?php else: ?>
                         <li><a href="{{ URL::to('/login') }}">Login</a></li>

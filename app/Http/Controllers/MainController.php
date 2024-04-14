@@ -250,6 +250,77 @@ public function post_details($id)
         }
     }
 
+
+
+    public function user_profile()
+    {
+        $user_id = session('id');
+        $user = User::find($user_id);
+        $published_blogs_count = Post::where('user_id', $user_id)->where('post_status', 'Active')->count();
+        $pending_blogs_count = Post::where('user_id', $user_id)->where('post_status', 'Pending')->count();
+        $comments = Comment::where('user_id', $user_id)->get();
+        return view('user_profile', compact('user', 'comments', 'published_blogs_count', 'pending_blogs_count'));
+    }
+
+
+    public function edit_profile(Request $request, $id)
+{
+    $request->validate([
+        'fullname' => 'required', // Ensure fullname is not empty
+        'email' => 'required|email', // Ensure email is not empty and in correct format
+        'password' => 'required', // Ensure password is not empty
+        // Add more validation rules as needed
+    ]);
+
+    $user = User::find($id);
+
+    $user->fullname = $request->input('fullname');
+    $user->email = $request->input('email');
+    $user->password = $request->input('password');
+
+    // Handle image upload if provided
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('uploads/profile', $imageName);
+        $user->picture = $imageName;
+    }
+
+    // Save the updated user profile
+    if ($user->save()) {
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+    } else {
+        return redirect()->back()->with('error', 'Failed to update profile. Please try again.');
+    }
+}
+
+
+
+public function delete_user($id)
+{
+    $user = User::find($id);
+    $user->delete();
+    session()->forget('id');
+    session()->forget('type');
+    return redirect('/');
+    
+    
+}
+
+public function admin_profile()
+{
+
+    $user_id = session('id');
+    $user = User::find($user_id);
+    $published_blogs_count = Post::where('user_id', $user_id)->where('post_status', 'Active')->count();
+    $pending_blogs_count = Post::where('user_id', $user_id)->where('post_status', 'Pending')->count();
+    $comments = Comment::where('user_id', $user_id)->get();
+    return view('admin.admin_profile', compact('user', 'comments', 'published_blogs_count', 'pending_blogs_count'));
+    
+}
+
+    
+
     
 
 }

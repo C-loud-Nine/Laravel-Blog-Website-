@@ -60,7 +60,7 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" style="background-color: #343a40; border-color: #343a40;" class="{{ $key == 0 ? 'active' : '' }}"></li>
                 @endforeach
             </ol>
-            <div class="carousel-inner" style="background-color: #D3F1E5; padding-top: 100px; padding-bottom: 150px; border-radius: 100px;">
+            <div class="carousel-inner" style="background-color: #EAE5EF; padding-top: 100px; padding-bottom: 150px; border-radius: 100px;">
                 @foreach ($latestPosts as $key => $singlePost)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <div class="container">
@@ -200,15 +200,23 @@
       
       
       
-      <!-- choose section start -->
-<div class="choose_section layout_padding">
-   <div class="container">
-      <h1 class="choose_taital">Why Choose Blogarama</h1>
-      <p class="choose_text">Blogarama offers a unique platform for bloggers of all interests and niches. Whether you're a seasoned blogger or just starting out, our diverse community provides the perfect environment to share your passion with like-minded individuals. With Blogarama, you can discover new blogs, connect with fellow bloggers, and expand your audience. Join us today and experience the excitement of the blogging world!</p>
-      <div class="read_bt_1"><a href="{{URL::to('/services')}}">Read More</a></div>
-   </div>
-</div>
-<!-- choose section end -->
+ <!-- about section start -->
+ <div class="about_section layout_padding">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="about_taital_main">
+                     <h1 class="about_taital">Top Stories</h1>
+                     <p class="about_text">news api text</p>
+                     <div class="readmore_bt"><a href="{{ URL::to('/services') }}">Continue</a></div>
+                  </div>
+               </div>
+               <div class="col-md-6 padding_right_0">
+                  <div><img src="images/bg.jpg" class="about_img"></div>
+               </div>
+            </div>
+         </div>
+      </div>
 
 
 <x-footer />

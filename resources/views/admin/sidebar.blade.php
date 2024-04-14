@@ -20,6 +20,9 @@
         <li class="{{ Request::is('post_page') ? 'active' : '' }}">
             <a href="{{ url('post_page') }}"> <i class="icon-grid"></i>Add Blog</a>
         </li>
+        <li class="{{ Request::is('admin_profile') ? 'active' : '' }}">
+            <a href="{{ url('admin_profile') }}"> <i class="icon-chart"></i>Admin Profile</a>
+        </li>
         <li class="{{ Request::is('view_post') ? 'active' : '' }}">
             <a href="{{ url('view_post') }}"> <i class="fa fa-bar-chart"></i>View Blog</a>
         </li>
