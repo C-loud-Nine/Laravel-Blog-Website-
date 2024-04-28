@@ -162,7 +162,7 @@
                 <h1 class="about_taital" style="color: white; margin-bottom: 20px;">Top Stories</h1>
                 <p class="about_text" style="color: white; margin-bottom: 30px;">news api text</p>
                 <div class="readmore_bt">
-                    <a href="{{ URL::to('/services') }}" style="color: white; background-color: #4CAF50; border: none; padding: 10px 30px; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;">Continue</a>
+                    <a href="{{ URL::to('/newsapi') }}" style="color: white; background-color: #4CAF50; border: none; padding: 10px 30px; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;">Continue</a>
                 </div>
             </div>
         </div>

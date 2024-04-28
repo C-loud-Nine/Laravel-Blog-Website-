@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NewsController;
+
 
 
 Route::get('/', [MainController::class, 'index'])->name('index');
@@ -65,7 +67,11 @@ Route::get('/promotion', [AdminController::class, 'promotion']);
 Route::post('/add_promotion', [AdminController::class, 'add_promotion']);
 Route::get('/add_promotion/{id}', [AdminController::class, 'add_promotion']);
 Route::get('/adminlist', [AdminController::class, 'adminlist']);
-;
+
+
+
+Route::get('/newsapi',[NewsController::class,'showNews']);
+Route::get('/newsdetails/{id}', [NewsController::class, 'showNewsDetails'])->name('news.details');
 
 
 

@@ -231,7 +231,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(../images/newbg.jpg);
     height: auto;
     background-size: 100%;
     padding: 0px 0px 20px 0px;
@@ -315,6 +315,7 @@ button {
     padding-bottom: 10px;
     color: #fff;
     border-radius: 40px;
+    font-weight: bold; /* Added font-weight property */
 }
 
 .menu_main li a {
@@ -324,8 +325,8 @@ button {
 }
 
 .menu_main li a:hover {
-    color: #ffffff;
-    background-color: #2b2278;
+    color: #3c3b6e;
+    background-color: #E1ECF9;
 }
 
 .mb-lg-0,
@@ -337,7 +338,7 @@ button {
 
 .header_main {
     width: 100%;
-    background-image: url(../images/header-bg.png);
+    background-image: url(../images/newbg.jpg);
     background-size: 100%;
     padding: 10px 0px 0px 0px;
 }
@@ -393,8 +394,8 @@ button {
 }
 
 .read_bt a:hover {
-    background-color: #2b2278;
-    color: #ffffff;
+    background-color: #E1ECF9;
+    color: #3c3b6e;
 }
 
 
