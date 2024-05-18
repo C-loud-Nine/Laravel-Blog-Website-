@@ -319,6 +319,29 @@ public function admin_profile()
     
 }
 
+
+public function searchPost(Request $request)
+{
+    $query = $request->get('search');
+    $posts = Post::where('title', 'LIKE', '%' . $query . '%')->get();
+
+    if ($request->ajax()) {
+        return response()->json($posts);
+    }
+
+    $allPosts = Post::all(); // Retrieve all posts for the main page
+    return view('services', compact('allPosts'));
+}
+
+
+public function searchResults(Request $request)
+{
+    $search = $request->input('search');
+    $posts = Post::where('title', 'LIKE', '%' . $search . '%')->get();
+
+    return view('search_results', compact('posts', 'search'));
+}
+
     
 
     

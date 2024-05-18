@@ -43,35 +43,41 @@ Route::get('/admin_profile', [MainController::class, 'admin_profile'])->name('ad
 
 
 
-Route::get('/admin/adminhome', [AdminController::class, 'adminHome'])->name('admin.adminhome');
-Route::post('/admin/adminhome', [AdminController::class, 'adminHome'])->name('admin.adminhome');
+Route::get('/admin/adminhome', [AdminController::class, 'adminHome'])->name('admin.adminhome')->middleware('admin');
+
+Route::post('/admin/adminhome', [AdminController::class, 'adminHome'])->name('admin.adminhome')->middleware('admin');
 
 
-Route::get('/post_page', [AdminController::class, 'post_page']);
+Route::get('/post_page', [AdminController::class, 'post_page'])->middleware('admin');
 
-Route::get('/bloggers', [AdminController::class, 'bloggers']);
+Route::get('/bloggers', [AdminController::class, 'bloggers'])->middleware('admin');
 
 
-Route::post('/add_post', [AdminController::class, 'add_post']);
-Route::get('/view_post', [AdminController::class, 'view_post']);
-Route::get('/admin.adminhome', [AdminController::class, 'adminHome']);
-Route::get('/delete_post/{id}', [AdminController::class, 'delete_post']);
-Route::get('/update_post/{id}', [AdminController::class, 'update_post']);
-Route::post('/update_postdone/{id}', [AdminController::class, 'update_postdone']);
-Route::get('/post_approve', [AdminController::class, 'post_approve']);
-Route::get('/accept_post/{id}', [AdminController::class, 'accept_post']);
-Route::get('remove_user/{id}', [AdminController::class, 'remove_user']);
-Route::get('/incomp_blog', [AdminController::class, 'incomp_blog']);
+Route::post('/add_post', [AdminController::class, 'add_post'])->middleware('admin');
+Route::get('/view_post', [AdminController::class, 'view_post'])->middleware('admin');
+Route::get('/admin.adminhome', [AdminController::class, 'adminHome'])->middleware('admin');
+Route::get('/delete_post/{id}', [AdminController::class, 'delete_post'])->middleware('admin');
+Route::get('/update_post/{id}', [AdminController::class, 'update_post'])->middleware('admin');
+Route::post('/update_postdone/{id}', [AdminController::class, 'update_postdone'])->middleware('admin');
+Route::get('/post_approve', [AdminController::class, 'post_approve'])->middleware('admin');
+Route::get('/accept_post/{id}', [AdminController::class, 'accept_post'])->middleware('admin');
+Route::get('remove_user/{id}', [AdminController::class, 'remove_user'])->middleware('admin');
+Route::get('/incomp_blog', [AdminController::class, 'incomp_blog'])->middleware('admin');
 
-Route::get('/promotion', [AdminController::class, 'promotion']);
-Route::post('/add_promotion', [AdminController::class, 'add_promotion']);
-Route::get('/add_promotion/{id}', [AdminController::class, 'add_promotion']);
-Route::get('/adminlist', [AdminController::class, 'adminlist']);
+Route::get('/promotion', [AdminController::class, 'promotion'])->middleware('admin');
+Route::post('/add_promotion', [AdminController::class, 'add_promotion'])->middleware('admin');
+Route::get('/add_promotion/{id}', [AdminController::class, 'add_promotion'])->middleware('admin');
+Route::get('/adminlist', [AdminController::class, 'adminlist'])->middleware('admin');
 
 
 
 Route::get('/newsapi',[NewsController::class,'showNews']);
 Route::get('/newsdetails/{id}', [NewsController::class, 'showNewsDetails'])->name('news.details');
 
+
+
+
+Route::get('/search', [MainController::class, 'searchPost'])->name('searchPost');
+Route::get('/search-results', [MainController::class, 'searchResults'])->name('searchResults');
 
 

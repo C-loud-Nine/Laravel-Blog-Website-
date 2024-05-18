@@ -40,6 +40,13 @@ class AdminController extends Controller
 
 public function adminHome()
 {
+
+    if (session()->get('type') !== 'Admin') {
+        // If the user is not an admin, redirect to 401 Unauthorized page
+        return abort(401, 'Unauthorized Access');
+    }
+
+
     try {
         // Retrieve total users count
         $totalUsers = User::count();
@@ -119,11 +126,20 @@ public function adminHome()
     
     
     public function post_page(){
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
         return view('admin.post_page');
     }
 
     public function add_post(Request $request){
         // Retrieve user information from session variables
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+        
         $user_id = session('id');
         $fullname = session('fullname');
         $type = session('type');
@@ -158,6 +174,11 @@ public function adminHome()
     }
 
     public function view_post(){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
         
         $post=Post::where('post_status','Active')->get();
 
@@ -166,6 +187,12 @@ public function adminHome()
     }
 
     public function delete_post($id){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $post=Post::find($id);
         $post->delete();
         return redirect()->back()->with('success', 'Post deleted successfully!');
@@ -177,6 +204,12 @@ public function adminHome()
     }
 
     public function update_postdone(Request $request,$id){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $post=Post::find($id);
         $post->title=$request->input('title');
         $post->description=$request->input('description');
@@ -192,11 +225,23 @@ public function adminHome()
 
 
     public function post_approve(){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $post=Post::where('post_status','Pending')->get();
         return view('admin.post_approve',compact('post'));
     }
 
     public function accept_post($id){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $post=Post::find($id);
         $post->post_status='Active';
         $post->save();
@@ -204,11 +249,23 @@ public function adminHome()
     }
 
     public function bloggers(){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $bloggers=User::where('type','Blogger')->get();
         return view('admin.bloggers',compact('bloggers'));
     }
 
     public function remove_user($id){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $user=User::find($id);
         $user->delete();
         return redirect()->back()->with('success', 'User removed successfully!');
@@ -217,6 +274,11 @@ public function adminHome()
 
     public function incomp_blog()
     {
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $incomp_blog = Post::whereNull('image')
             ->orWhereNull('title')
             ->orWhereNull('description')
@@ -231,6 +293,11 @@ public function adminHome()
 
     public function promotion()
     {
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         // Calculate the timestamp for 48 hours ago
         $time = now()->subHours(48);
 
@@ -244,6 +311,12 @@ public function adminHome()
 
 
     public function add_promotion($id){
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+
         $bloggers=User::find($id);
         $bloggers->type='Admin';
         $bloggers->save();
@@ -254,6 +327,12 @@ public function adminHome()
 
     public function adminlist()
     {
+
+        if (session()->get('type') !== 'Admin') {
+            // If the user is not an admin, redirect to 401 Unauthorized page
+            return abort(401, 'Unauthorized Access');
+        }
+        
         $bloggers = User::where('type', 'Admin')->get();
         return view('admin.adminlist', compact('bloggers'));
     }

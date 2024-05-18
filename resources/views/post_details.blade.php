@@ -19,7 +19,7 @@
 </div>
 
 <!-- Comment Section -->
-<div class="comment_section layout_padding">
+<div class="about_section layout_padding">
     <div class="container" style="width: 90%; margin: 0 auto;">
         <h2 class="comment-heading" style="font-size: 24px; font-weight: bold; margin-bottom: 20px; text-align: center;">Comments</h2>
         

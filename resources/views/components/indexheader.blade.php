@@ -93,8 +93,9 @@
                         <li><a href="{{ URL::to('/user_profile') }}">Profile</a></li>
                         <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
                     <?php else: ?>
-                        <li><a href="{{ URL::to('/register') }}">Register</a></li>
                         <li><a href="{{ URL::to('/login') }}">Login</a></li>
+                        <li><a href="{{ URL::to('/register') }}">Register</a></li>
+                        
                     <?php endif; ?>
                   </ul>
                </div>
