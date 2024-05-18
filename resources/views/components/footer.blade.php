@@ -8,7 +8,7 @@
 
         <div class="location_main">
             <div class="call_text"><img src="images/mail-icon.png"></div>
-            <div class="call_text"><a href="#" style="color: white;">demo@gmail.com</a></div>
+            <div class="call_text"><a href="#" style="color: white;">blogarama@gmail.com</a></div>
         </div>
         <div class="social_icon">
             <ul>
