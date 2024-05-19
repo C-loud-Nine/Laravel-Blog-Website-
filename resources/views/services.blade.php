@@ -17,13 +17,15 @@
         <div class="services_section_2">
             <div class="row">
                 @foreach($post as $post)
-                    <div class="col-md-4" style="margin-bottom: 50px;">
+                    <div class="col-md-4 post-item" style="margin-bottom: 50px;">
                         <div class="post_image_container" style="height: 200px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-                            <img src="postimages/{{$post->image}}" class="services_img" style="max-width: 100%; max-height: 100%; border-radius: 5px;">
+                            <img src="postimages/{{$post->image}}" class="services_img post-image" style="max-width: 100%; max-height: 100%; border-radius: 5px;">
                         </div>
-                        <h2 style="margin-top: 20px; font-size: 24px; text-align: center;">{{$post->title}}</h2>
-                        <p style="font-size: 16px; color: #666; text-align: center;">Posted By <b>{{$post->name}}</b></p>
-                        <div class="btn_main text-center" style="margin-top: 20px;"><a href="{{url('post_details',$post->id)}}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; display: inline-block;">READ MORE</a></div>
+                        <h2 class="post-title" style="margin-top: 20px; font-size: 24px; text-align: center;">{{$post->title}}</h2>
+                        <p class="post-date" style="font-size: 16px; color: #666; text-align: center;">Posted By <b>{{$post->name}}</b></p>
+                        <div class="btn_main text-center" style="margin-top: 20px;">
+                            <a href="{{url('post_details',$post->id)}}" class="btn-read-more" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; display: inline-block;">READ MORE</a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -34,8 +36,7 @@
 
 <x-footer />
 
-<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <!-- AJAX script for real-time search -->
 <script>
@@ -97,4 +98,16 @@
     .search-result-item:hover {
         background-color: #C7CADA;
     }
+    .btn-read-more:hover {
+        background-color: #0056b3;
+    }
+    .post-image:hover {
+        opacity: 0.9;
+    }
+    .post-title:hover, .post-date:hover {
+        color: #0056b3;
+    }
 </style>
+
+</body>
+</html>

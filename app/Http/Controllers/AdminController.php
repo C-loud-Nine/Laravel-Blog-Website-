@@ -9,33 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    // public function adminHome(){
-
-    //     return view('admin.adminhome');
-    // }
-
-//     public function adminHome()
-// {
-//     // Retrieve total users count
-//     $totalUsers = User::count();
-
-//     // Retrieve total blogs count
-//     $totalBlogs = Post::count();
-
-//     // Retrieve pending blogs count
-//     $pendingBlogs = Post::where('post_status', 'Pending')->count();
-
-//     // Retrieve total admins count (you need to define the criteria for admin users)
-//     $totalAdmins = User::where('type', 'Admin')->count();
-
-//     return view('admin.adminhome', [
-//         'totalUsers' => $totalUsers,
-//         'totalBlogs' => $totalBlogs,
-//         'pendingBlogs' => $pendingBlogs,
-//         'totalAdmins' => $totalAdmins,
-//     ]);
-// }
-
+    
 
 
 public function adminHome()

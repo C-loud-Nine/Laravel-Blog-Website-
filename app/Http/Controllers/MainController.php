@@ -309,6 +309,10 @@ public function delete_user($id)
 
 public function admin_profile()
 {
+    if (session()->get('type') !== 'Admin') {
+        // If the user is not an admin, redirect to 401 Unauthorized page
+        return abort(401, 'Unauthorized Access');
+    }
 
     $user_id = session('id');
     $user = User::find($user_id);

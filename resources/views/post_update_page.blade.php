@@ -25,7 +25,7 @@
 
                 <div class="form-group" style="margin-bottom: 20px;">
                     <label for="description" style="display: block; font-weight: bold; margin-bottom: 8px; color: #333333;">Post Description</label>
-                    <textarea name="description" id="description" rows="10" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; font-size: 16px; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">{{$post->description}}</textarea>
+                    <textarea name="description" id="description" rows="14" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; font-size: 16px; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">{{$post->description}}</textarea>
                 </div>
 
                 <div style="margin-bottom: 20px;">
